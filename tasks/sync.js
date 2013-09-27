@@ -28,11 +28,14 @@ module.exports = function (grunt) {
   }
 
   function sync() {
-    var propertiesToSync = this.data.options.sync || [
+    /*jshint validthis:true */
+    var configValues = (this.data && this.data.options) || {};
+    var propertiesToSync = configValues.sync || [
       'name',
       'author',
       'version',
-      'description'
+      'description',
+      'private'
     ];
     grunt.verbose.writeln('syncing', propertiesToSync);
 
@@ -48,7 +51,7 @@ module.exports = function (grunt) {
 
     var options = {};
     propertiesToSync.forEach(function (propertyToSync) {
-      options[propertyToSync] = pkg[propertyToSync] || this.data.options[propertyToSync];
+      options[propertyToSync] = pkg[propertyToSync] || configValues[propertyToSync];
     }, this);
     grunt.verbose.writeln('options added to bower', JSON.stringify(options, null, 2));
 
