@@ -10,6 +10,9 @@
 
 module.exports = function (grunt) {
 
+  // load sync task
+  grunt.loadTasks('tasks');
+
   // Project configuration.
   grunt.initConfig({
     jshint: {
@@ -26,6 +29,13 @@ module.exports = function (grunt) {
         "boss": true,
         "eqnull": true,
         "node": true
+      }
+    },
+
+    sync: {
+      all: {
+        options: {
+        }
       }
     }
   });

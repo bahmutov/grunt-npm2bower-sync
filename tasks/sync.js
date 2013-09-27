@@ -10,7 +10,7 @@
 
 module.exports = function (grunt) {
 
-  grunt.registerTask('sync', 'Sync manifests.', function () {
+  grunt.registerTask('sync', 'Sync package.json -> bower.json', function () {
 
     // If bower.json doesn't exist yet, add one.
     if (!grunt.file.exists('bower.json')) {
