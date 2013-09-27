@@ -9,8 +9,35 @@
 'use strict';
 
 module.exports = function (grunt) {
+  var _ = grunt.util._;
 
-  grunt.registerTask('sync', 'Sync package.json -> bower.json', function () {
+  function verifyPackage(pkg) {
+    if (!_.isObject(pkg)) {
+      grunt.fail.warn('invalid package object');
+    }
+    if (!_.isString(pkg.name)) {
+      grunt.fail.warn('package.json is missing name');
+    }
+    if (!_.isString(pkg.author) &&
+      !_.isObject(pkg.author)) {
+      grunt.fail.warn('package.json is missing author');
+    }
+    if (!_.isString(pkg.version)) {
+      grunt.fail.warn('package.json is missing version');
+    }
+  }
+
+  function sync() {
+    var propertiesToSync = this.data.options.sync || [
+      'name',
+      'author',
+      'version',
+      'description'
+    ];
+    grunt.verbose.writeln('syncing', propertiesToSync);
+
+    var pkg = grunt.file.readJSON('package.json');
+    verifyPackage(pkg);
 
     // If bower.json doesn't exist yet, add one.
     if (!grunt.file.exists('bower.json')) {
@@ -18,23 +45,17 @@ module.exports = function (grunt) {
     }
 
     var bower = grunt.file.readJSON('bower.json');
-    var pkg = grunt.file.readJSON('package.json');
-    var _ = grunt.util._;
 
-    var options = this.options({
-      name: pkg.name,
-      version: pkg.version,
-      main: [pkg.main],
-      dependencies: pkg.dependencies || void 0,
-      devDependencies: pkg.devDependencies || void 0
-    });
-
-    if (pkg.main || options.main) {
-      options.main = _.union([], [pkg.main], (options.main || ['']));
-    }
+    var options = {};
+    propertiesToSync.forEach(function (propertyToSync) {
+      options[propertyToSync] = pkg[propertyToSync] || this.data.options[propertyToSync];
+    }, this);
+    grunt.verbose.writeln('options added to bower', JSON.stringify(options, null, 2));
 
     bower = JSON.stringify(_.extend(bower, options), null, 2);
     grunt.file.write('bower.json', bower);
-  });
+  }
+
+  grunt.registerMultiTask('sync', 'Sync package.json -> bower.json', sync);
 
 };

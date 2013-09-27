@@ -35,6 +35,7 @@ module.exports = function (grunt) {
     sync: {
       all: {
         options: {
+          sync: ['author', 'name', 'version', 'private']
         }
       }
     }
