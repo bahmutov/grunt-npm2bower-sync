@@ -2,6 +2,12 @@
 
 > Syncs specified properties from package.json to bower.json
 
+[![NPM info][nodei.co]][npm-url]
+
+[![Build status][ci-image]][ci-url]
+[![dependencies][dependencies-image]][dependencies-url]
+[![endorse][endorse-image]][endorse-url]
+
 ```bash
 npm install grunt-npm2bower-sync --save-dev
 ```
@@ -21,7 +27,7 @@ grunt.initConfig({
   }
 
   grunt.loadNpmTasks('grunt-npm2bower-sync');
-  grunt.registerTask('default', ['jshint', 'sync']);
+  grunt.registerTask('default', ['sync']);
 });
 ```
 You can also sync properties from the command line using command `grunt sync`
@@ -33,3 +39,12 @@ This repo was forked from [grunt-sync-pkg](https://github.com/jonschlinkert/grun
 
 Copyright (c) 2013-09-09 Jon Schlinkert
 Licensed under the [MIT LICENSE](LICENSE-MIT).
+
+[ci-image]: https://travis-ci.org/bahmutov/grunt-npm2bower-sync.png?branch=master
+[ci-url]: https://travis-ci.org/bahmutov/grunt-npm2bower-sync
+[nodei.co]: https://nodei.co/npm/grunt-npm2bower-sync.png?downloads=true
+[npm-url]: https://npmjs.org/package/grunt-npm2bower-sync
+[dependencies-image]: https://david-dm.org/bahmutov/grunt-npm2bower-sync.png
+[dependencies-url]: https://david-dm.org/bahmutov/grunt-npm2bower-sync
+[endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
+[endorse-url]: https://coderwall.com/bahmutov

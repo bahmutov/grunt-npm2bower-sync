@@ -1,7 +1,7 @@
 {
   "name": "grunt-npm2bower-sync",
   "description": "Grunt plugin syncing properties from package.json to bower.json",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/bahmutov/grunt-npm2bower-sync",
   "author": {
     "name": "Gleb Bahmutov",
