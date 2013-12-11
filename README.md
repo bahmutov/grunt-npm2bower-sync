@@ -21,7 +21,10 @@ grunt.initConfig({
     all: {
       options: {
         // sync specific options
-        sync: ['author', 'name', 'version', 'private']
+        sync: ['author', 'name', 'version', 'private'],
+        // optional: specify source and destination filenames
+        from: '../package.json',
+        to: 'dist/bower.json'
       }
     }
   }

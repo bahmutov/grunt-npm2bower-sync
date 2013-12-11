@@ -30,24 +30,28 @@ module.exports = function (grunt) {
   function sync() {
     /*jshint validthis:true */
     var configValues = (this.data && this.data.options) || {};
+    var sourceFilename = configValues.from || 'package.json';
+    var destinationFilename = configValues.to || 'bower.json';
     var propertiesToSync = configValues.sync || [
       'name',
       'author',
       'version',
       'description',
-      'private'
+      'private',
+      'license'
     ];
-    grunt.verbose.writeln('syncing', propertiesToSync);
+    grunt.verbose.writeln('syncing', propertiesToSync, 'from', sourceFilename,
+      'to', destinationFilename);
 
-    var pkg = grunt.file.readJSON('package.json');
+    var pkg = grunt.file.readJSON(sourceFilename);
     verifyPackage(pkg);
 
     // If bower.json doesn't exist yet, add one.
-    if (!grunt.file.exists('bower.json')) {
-      grunt.file.write('bower.json', "{}");
+    if (!grunt.file.exists(destinationFilename)) {
+      grunt.file.write(destinationFilename, "{}");
     }
 
-    var bower = grunt.file.readJSON('bower.json');
+    var bower = grunt.file.readJSON(destinationFilename);
 
     var options = {};
     propertiesToSync.forEach(function (propertyToSync) {
@@ -56,7 +60,7 @@ module.exports = function (grunt) {
     grunt.verbose.writeln('options added to bower', JSON.stringify(options, null, 2));
 
     bower = JSON.stringify(_.extend(bower, options), null, 2);
-    grunt.file.write('bower.json', bower);
+    grunt.file.write(destinationFilename, bower);
   }
 
   grunt.registerMultiTask('sync', 'Sync package.json -> bower.json', sync);
