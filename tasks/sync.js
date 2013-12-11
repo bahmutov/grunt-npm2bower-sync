@@ -55,6 +55,9 @@ module.exports = function (grunt) {
 
     var options = {};
     propertiesToSync.forEach(function (propertyToSync) {
+      if (propertyToSync === 'author') {
+        delete bower.authors;
+      }
       options[propertyToSync] = pkg[propertyToSync] || configValues[propertyToSync];
     }, this);
     grunt.verbose.writeln('options added to bower', JSON.stringify(options, null, 2));
