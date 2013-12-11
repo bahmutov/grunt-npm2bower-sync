@@ -6,6 +6,7 @@
 
 [![Build status][ci-image]][ci-url]
 [![dependencies][dependencies-image]][dependencies-url]
+[![devdependencies][devdependencies-image] ][devdependencies-url]
 [![endorse][endorse-image]][endorse-url]
 
 ```bash
@@ -49,5 +50,7 @@ Licensed under the [MIT LICENSE](LICENSE-MIT).
 [npm-url]: https://npmjs.org/package/grunt-npm2bower-sync
 [dependencies-image]: https://david-dm.org/bahmutov/grunt-npm2bower-sync.png
 [dependencies-url]: https://david-dm.org/bahmutov/grunt-npm2bower-sync
+[devdependencies-image]: https://david-dm.org/bahmutov/grunt-npm2bower-sync/dev-status.png
+[devdependencies-url]: https://david-dm.org/bahmutov/grunt-npm2bower-sync#info=devDependencies
 [endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
 [endorse-url]: https://coderwall.com/bahmutov
