@@ -35,7 +35,9 @@ module.exports = function (grunt) {
     sync: {
       all: {
         options: {
-          sync: ['author', 'name', 'version', 'private']
+          from: './package.json',
+          to: './bower.json',
+          sync: ['author', 'name', 'version', 'private', 'license']
         }
       }
     }
