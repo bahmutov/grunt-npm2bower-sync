@@ -35,7 +35,9 @@ module.exports = function (grunt) {
     sync: {
       all: {
         options: {
-          sync: ['author', 'name', 'version', 'private']
+          from: './package.json',
+          to: './bower.json',
+          sync: ['author', 'name', 'version', 'private', 'license']
         }
       }
     }
@@ -45,6 +47,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['jshint', 'sync']);
 
 };

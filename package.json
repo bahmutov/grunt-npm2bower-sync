@@ -1,23 +1,23 @@
 {
-  "name": "grunt-sync-pkg",
-  "description": "Minimalist Grunt plugin to sync only basic properties between package.json and bower.json",
-  "version": "0.2.1",
-  "homepage": "https://github.com/jonschlinkert/grunt-sync-pkg",
+  "name": "grunt-npm2bower-sync",
+  "description": "Grunt plugin syncing properties from package.json to bower.json",
+  "version": "0.3.0",
+  "homepage": "https://github.com/bahmutov/grunt-npm2bower-sync",
   "author": {
-    "name": "Jon Schlinkert",
-    "url": "https://github.com/jonschlinkert"
+    "name": "Gleb Bahmutov",
+    "url": "https://github.com/bahmutov"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonschlinkert/grunt-sync-pkg.git"
+    "url": "https://github.com/bahmutov/grunt-npm2bower-sync"
   },
   "bugs": {
-    "url": "https://github.com/jonschlinkert/grunt-sync-pkg/issues"
+    "url": "https://github.com/bahmutov/grunt-npm2bower-sync/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/jonschlinkert/grunt-sync-pkg/blob/master/LICENSE-MIT"
+      "url": "https://github.com/bahmutov/grunt-npm2bower-syn/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -29,9 +29,14 @@
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.8.0",
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.2",
+    "pre-git": "0.0.14"
   },
   "keywords": [
     "gruntplugin"
-  ]
+  ],
+  "scripts": {
+    "test": "grunt"
+  },
+  "pre-commit": "grunt"
 }
