@@ -40,6 +40,8 @@ module.exports = function (grunt) {
       'private',
       'license'
     ];
+    var overridesToSync = configValues.overrides || {};
+
     grunt.verbose.writeln('syncing', propertiesToSync, 'from', sourceFilename,
       'to', destinationFilename);
 
@@ -60,6 +62,12 @@ module.exports = function (grunt) {
       }
       options[propertyToSync] = pkg[propertyToSync] || configValues[propertyToSync];
     }, this);
+
+	for (var overrideToSync in overridesToSync) {
+		options[overrideToSync] = overridesToSync[overrideToSync];
+		grunt.verbose.writeln(overrideToSync);
+	}
+
     grunt.verbose.writeln('options added to bower', JSON.stringify(options, null, 2));
 
     bower = JSON.stringify(_.extend(bower, options), null, 2);
