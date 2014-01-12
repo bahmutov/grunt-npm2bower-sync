@@ -23,6 +23,13 @@ grunt.initConfig({
       options: {
         // sync specific options
         sync: ['author', 'name', 'version', 'private'],
+        // optional: override package values
+        overrides: {
+        	main: [
+        		'<%= pkg.codename %>.js',
+        		'<%= pkg.codename %>.css'
+        	]
+        },
         // optional: specify source and destination filenames
         from: '../package.json',
         to: 'dist/bower.json'
