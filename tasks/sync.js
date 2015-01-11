@@ -38,7 +38,9 @@ module.exports = function (grunt) {
       'version',
       'description',
       'private',
-      'license'
+      'license',
+      'homepage',
+      'main'
     ];
     var overridesToSync = configValues.overrides || {};
 
