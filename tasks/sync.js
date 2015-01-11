@@ -27,9 +27,9 @@ module.exports = function (grunt) {
     }
   }
 
-  function sync() {
+  function sync(configValues) {
+    configValues = configValues || {};
     /*jshint validthis:true */
-    var configValues = (this.data && this.data.options) || {};
     var sourceFilename = configValues.from || 'package.json';
     var destinationFilename = configValues.to || 'bower.json';
     var propertiesToSync = configValues.sync || [
@@ -63,10 +63,10 @@ module.exports = function (grunt) {
       options[propertyToSync] = pkg[propertyToSync] || configValues[propertyToSync];
     }, this);
 
-	for (var overrideToSync in overridesToSync) {
-		options[overrideToSync] = overridesToSync[overrideToSync];
-		grunt.verbose.writeln(overrideToSync);
-	}
+    for (var overrideToSync in overridesToSync) {
+      options[overrideToSync] = overridesToSync[overrideToSync];
+      grunt.verbose.writeln(overrideToSync);
+    }
 
     grunt.verbose.writeln('options added to bower', JSON.stringify(options, null, 2));
 
@@ -74,6 +74,17 @@ module.exports = function (grunt) {
     grunt.file.write(destinationFilename, bower);
   }
 
-  grunt.registerMultiTask('sync', 'Sync package.json -> bower.json', sync);
+  var name = 'sync';
+  var description = 'Sync package.json -> bower.json';
 
+  if (grunt.config.data.name) {
+      grunt.registerMultiTask(name, description, function() {
+        // grab options using this.options() method provided by grunt
+        sync(this.data.options);
+      });
+    } else {
+      grunt.registerTask(name, description, function () {
+        sync();
+      });
+    }
 };

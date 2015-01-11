@@ -17,7 +17,6 @@ Once that's done, add this line to your project's Gruntfile.js:
 
 ```js
 grunt.initConfig({
-
   sync: {
     all: {
       options: {
@@ -36,13 +35,20 @@ grunt.initConfig({
       }
     }
   }
-
   grunt.loadNpmTasks('grunt-npm2bower-sync');
   grunt.registerTask('default', ['sync']);
 });
 ```
 You can also sync properties from the command line using command `grunt sync`
 
+If you need just the default properties synced, you can use task `sync` without options
+
+```js
+grunt.initConfig({
+  grunt.loadNpmTasks('grunt-npm2bower-sync');
+  grunt.registerTask('default', ['sync']);
+});
+```
 
 ## License
 
