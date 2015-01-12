@@ -58,10 +58,13 @@ module.exports = function (grunt) {
 
     var options = {};
     propertiesToSync.forEach(function (propertyToSync) {
+      var value = pkg[propertyToSync] || configValues[propertyToSync];
       if (propertyToSync === 'author') {
-        delete bower.authors;
+        bower.authors = [value];
+        delete bower.author;
+      } else {
+        options[propertyToSync] = value;
       }
-      options[propertyToSync] = pkg[propertyToSync] || configValues[propertyToSync];
     }, this);
 
     for (var overrideToSync in overridesToSync) {
