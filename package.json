@@ -28,12 +28,15 @@
     "test": "grunt"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "^0.10.0",
     "grunt": "^0.4.5",
-    "pre-git": "0.0.16"
+    "grunt-contrib-jshint": "0.11.0",
+    "pre-git": "0.1.1"
   },
   "keywords": [
     "gruntplugin"
   ],
-  "pre-commit": ["grunt", "npm version"]
+  "pre-commit": [
+    "grunt",
+    "npm version"
+  ]
 }
