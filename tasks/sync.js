@@ -11,18 +11,17 @@
 module.exports = function (grunt) {
   var _ = grunt.util._;
 
-  function verifyPackage(pkg) {
+  function verifyPackage(pkg, overridesToSync) {
     if (!_.isObject(pkg)) {
       grunt.fail.warn('invalid package object');
     }
-    if (!_.isString(pkg.name)) {
+    if (!_.isString(pkg.name) && !overridesToSync.name) {
       grunt.fail.warn('package.json is missing name');
     }
-    if (!_.isString(pkg.author) &&
-      !_.isObject(pkg.author)) {
+    if (!_.isString(pkg.author) && !_.isObject(pkg.author) && !overridesToSync.authors) {
       grunt.fail.warn('package.json is missing author');
     }
-    if (!_.isString(pkg.version)) {
+    if (!_.isString(pkg.version) && !overridesToSync.version) {
       grunt.fail.warn('package.json is missing version');
     }
   }
@@ -48,7 +47,7 @@ module.exports = function (grunt) {
       'to', destinationFilename);
 
     var pkg = grunt.file.readJSON(sourceFilename);
-    verifyPackage(pkg);
+    verifyPackage(pkg, overridesToSync);
 
     // If bower.json doesn't exist yet, add one.
     if (!grunt.file.exists(destinationFilename)) {
