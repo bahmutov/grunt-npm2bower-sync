@@ -81,7 +81,7 @@ module.exports = function (grunt) {
   var name = 'sync';
   var description = 'Sync package.json -> bower.json';
 
-  if (grunt.config.data.name) {
+  if (grunt.config.data[name]) {
       grunt.registerMultiTask(name, description, function() {
         // grab options using this.options() method provided by grunt
         sync(this.data.options);
