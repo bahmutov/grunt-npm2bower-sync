@@ -15,17 +15,13 @@ module.exports = function (grunt) {
     if (!_.isObject(pkg)) {
       grunt.fail.warn('invalid package object');
     }
-    if (!_.isString(pkg.name)
-    && !overridesToSync.name) {
+    if (!_.isString(pkg.name) && !overridesToSync.name) {
       grunt.fail.warn('package.json is missing name');
     }
-    if (!_.isString(pkg.author)
-    && !_.isObject(pkg.author)
-    && !overridesToSync.authors) {
+    if (!_.isString(pkg.author) && !_.isObject(pkg.author) && !overridesToSync.authors) {
       grunt.fail.warn('package.json is missing author');
     }
-    if (!_.isString(pkg.version)
-    && !overridesToSync.version) {
+    if (!_.isString(pkg.version) && !overridesToSync.version) {
       grunt.fail.warn('package.json is missing version');
     }
   }
